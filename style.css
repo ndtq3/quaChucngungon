@@ -10,10 +10,19 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Canvas */
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Scene */
 .scene {
   position: relative;
   width: 100vw;
   height: 100vh;
+  z-index: 2;
 }
 
 /* Door */
@@ -21,18 +30,18 @@ body {
   position: absolute;
   inset: 0;
   background: url("assets/door.jpg") center/cover no-repeat;
-  transition: transform 2s ease-in-out;
+  transition: transform 2.5s ease;
   transform-origin: left;
 }
 
 .door.open {
-  transform: perspective(1000px) rotateY(-75deg);
+  transform: perspective(1200px) rotateY(-75deg);
 }
 
 /* Butterfly */
 .butterfly {
   position: absolute;
-  width: 120px;
+  width: 180px; /* TO HƠN */
   left: 50%;
   top: 55%;
   transform: translate(-50%, -50%);
@@ -42,14 +51,13 @@ body {
 }
 
 .butterfly.fly {
-  top: -30%;
+  top: -40%;
   opacity: 0;
 }
 
-/* Wing flapping */
 @keyframes flap {
   0%,100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.05); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
 /* Text */
@@ -57,25 +65,15 @@ body {
   position: absolute;
   width: 100%;
   text-align: center;
+  top: 45%;
   color: #fff;
+  font-size: 36px;
   opacity: 0;
   transition: opacity 1.5s ease;
-}
-
-.hint {
-  bottom: 15%;
-  font-size: 22px;
   letter-spacing: 2px;
 }
 
-.name {
-  top: 45%;
-  font-size: 48px;
-  font-weight: 300;
-}
-
-.final {
-  top: 45%;
-  font-size: 26px;
-  line-height: 1.8;
+/* Heart canvas above galaxy */
+#heart {
+  z-index: 1;
 }
