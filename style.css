@@ -4,118 +4,62 @@
   box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  background: black;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+body{
+  margin:0;
+  background:black;
+  overflow:hidden;
+  font-family:Segoe UI, sans-serif;
 }
 
-canvas {
-  position: fixed;
-  inset: 0;
+/* BƯỚM */
+#butterfly{
+  position:absolute;
+  width:220px;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  z-index:5;
+  transition:all 2s ease;
 }
 
-#galaxy { z-index: 1; }
-#heart { z-index: 2; }
-
-#butterfly {
-  position: fixed;
-  width: 120px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  cursor: pointer;
-}
-
-#butterfly.fly {
-  animation: flyUp 2s forwards;
-}
-
-@keyframes flyUp {
-  to {
-    top: -20%;
-    transform: translateX(-50%) scale(0.6);
-  }
-}
-
-.hint {
-  position: fixed;
-  bottom: 10%;
-  width: 100%;
-  text-align: center;
-  color: white;
-  opacity: 0.8;
-  z-index: 5;
-}
-
-.text-wrap {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-}
-
-.text {
-  color: white;
-  font-size: 28px;
-  opacity: 0;
-  animation: float 3s infinite ease-in-out;
-}
-
-@keyframes float {
-  0% { transform: translateX(0) rotate(0deg); }
-  50% { transform: translateX(15px) rotate(3deg); }
-  100% { transform: translateX(0) rotate(0deg); }
-}
-
-
-/* Text wrapper – KHÓA VỊ TRÍ */
-.text-wrap{
+/* TEXT */
+.text{
   position:absolute;
   width:100%;
-  left:50%;
-  transform:translateX(-50%);
   text-align:center;
-}
-
-.text{
-  font-size:36px;
-  color:#fff;
-  letter-spacing:2px;
+  color:white;
+  font-size:32px;
   opacity:0;
-  transition:opacity 1.5s ease;
+  transition:opacity 1s ease;
+  z-index:4;
+  top:65%;
 }
-.text{
-  font-size:36px;
-  color:#fff;
-  letter-spacing:2px;
+
+.big{font-size:42px;}
+.tiny{font-size:14px;}
+
+/* ẢNH NHÂN VẬT */
+.char{
+  position:absolute;
+  width:220px;
   opacity:0;
-
-  /* hiệu ứng bay */
-  transform:
-    translate(var(--dx, 0px), var(--dy, 0px))
-    rotate(var(--rot, 0deg))
-    scale(0.96);
-
-  transition:
-    opacity 1.5s ease,
-    transform 2s ease;
-.text{
-  opacity:0;
-  transform:
-    translate(var(--dx, 0px), var(--dy, 0px))
-    rotate(var(--rot, 0deg))
-    scale(0.96);
-  transition:
-    opacity 1.5s ease,
-    transform 2s ease;
+  transition:opacity 1s ease;
+  z-index:2;
 }
 
-.text.show{
-  opacity:1;
-  transform:translate(0,0) rotate(0deg) scale(1);
-}
+/* VỊ TRÍ MẪU */
+#imgT{ left:50%; top:40%; transform:translateX(-50%); }
+#imgH{ right:5%; top:40%; }
+
+#imgT1{ left:5%; top:45%; }
+#imgT2{ right:5%; top:55%; }
+
+#imgQ{ left:40%; top:20%; }
+
+#imgN{ right:10%; top:45%; }
+
+#imgH1{ left:10%; top:50%; }
+#imgH2{ right:10%; top:50%; }
 
 
