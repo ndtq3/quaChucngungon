@@ -1,7 +1,13 @@
 /* ===== TIỆN ÍCH ===== */
 const $ = id => document.getElementById(id);
-const show = id => $(id) && ($(id).style.opacity = 1);
-const hide = id => $(id) && ($(id).style.opacity = 0);
+
+const show = id => {
+  if ($(id)) $(id).style.opacity = 1;
+};
+
+const hide = id => {
+  if ($(id)) $(id).style.opacity = 0;
+};
 
 const hideAllText = () => {
   document.querySelectorAll(".text")
@@ -31,8 +37,8 @@ $("butterfly").onclick = () => {
   let t = 1500;
   texts.forEach(id => {
     setTimeout(() => {
-      hideAllText();   // chữ cũ BIẾN MẤT
-      show(id);        // chữ mới HIỆN
+      hideAllText();
+      show(id);
     }, t);
     t += 2000;
   });
@@ -62,7 +68,16 @@ $("butterfly").onclick = () => {
   setTimeout(() => show("imgH1"), 15000);
   setTimeout(() => show("imgH2"), 17500);
 
-  // HIỆU ỨNG
+  // HIỆU ỨNG (TẠM – KHÔNG LỖI)
   startGalaxy();
   setTimeout(startHearts, 14000);
 };
+
+/* ===== HÀM GIẢ (ĐỂ KHÔNG LỖI) ===== */
+function startGalaxy() {
+  console.log("Galaxy start");
+}
+
+function startHearts() {
+  console.log("Hearts start");
+}
