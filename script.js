@@ -1,54 +1,25 @@
-/* ===== GET ELEMENTS ===== */
 const butterfly = document.getElementById("butterfly");
 
 const texts = [
-  document.getElementById("text1"),
-  document.getElementById("text2"),
-  document.getElementById("text3"),
-  document.getElementById("text4"),
-  document.getElementById("text5"),
-  document.getElementById("text6"),
-  document.getElementById("text7"),
-  document.getElementById("text8"),
-  document.getElementById("text9"),
+  text1, text2, text3, text4, text5,
+  text6, text7, text8, text9
 ];
 
-/* ===== INIT TEXT STYLE ===== */
-texts.forEach(t => {
-  t.style.opacity = 0;
-  t.style.position = "absolute";
-  t.style.transition = "all 1.2s ease";
-});
+texts.forEach(t => t.style.opacity = 0);
 
-/* ===== RANDOM POSITION ===== */
-function randomPosition(el) {
-  const x = Math.random() * 70 + 10; // %
-  const y = Math.random() * 70 + 10; // %
-  const r = Math.random() * 40 - 20; // rotate
-
-  el.style.left = x + "%";
-  el.style.top = y + "%";
-  el.style.transform = `translate(-50%, -50%) rotate(${r}deg)`;
-}
-
-/* ===== SHOW TEXT ===== */
-function showText(i) {
-  const t = texts[i];
-  randomPosition(t);
-  t.style.opacity = 1;
-}
-
-/* ===== CLICK BUTTERFLY ===== */
 butterfly.addEventListener("click", () => {
   butterfly.classList.add("fly");
+  document.querySelector(".hint").style.display = "none";
 
   let delay = 500;
-  texts.forEach((_, i) => {
-    setTimeout(() => showText(i), delay);
-    delay += 700;
+  texts.forEach(t => {
+    setTimeout(() => {
+      t.style.opacity = 1;
+    }, delay);
+    delay += 600;
   });
 
-  setTimeout(startGalaxy, 1000);
+  startGalaxy();
   setTimeout(startHearts, delay + 500);
 });
 
