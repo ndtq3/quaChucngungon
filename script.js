@@ -1,18 +1,11 @@
 /* ===== TIỆN ÍCH ===== */
 const $ = id => document.getElementById(id);
-
-const show = id => {
-  if ($(id)) $(id).style.opacity = 1;
-};
-
-const hide = id => {
-  if ($(id)) $(id).style.opacity = 0;
-};
+const show = id => $(id) && ($(id).style.opacity = 1);
+const hide = id => $(id) && ($(id).style.opacity = 0);
 
 const hideAllText = () => {
-  document.querySelectorAll(".text").forEach(t => {
-    t.style.opacity = 0;
-  });
+  document.querySelectorAll(".text")
+    .forEach(t => t.style.opacity = 0);
 };
 
 /* ===== KHỞI TẠO ===== */
@@ -27,26 +20,22 @@ $("butterfly").onclick = () => {
   $("butterfly").style.opacity = 0;
   hide("text0");
 
- const texts = [
-  "text1", "text2", "text3", "text4",
-  "text5", "text6", "text7",
-  "text10", "text11", "text12",
-  "text13", "text14"
-];
+  /* ===== TIMELINE TEXT ===== */
+  const texts = [
+    "text1","text2","text3","text4",
+    "text5","text6","text7",
+    "text10","text11","text12",
+    "text13","text14"
+  ];
 
-let t = 1500;
-
-texts.forEach(id => {
-  setTimeout(() => {
-    hideAllText();              // 1️⃣ cho chữ cũ biến mất
-
+  let t = 1500;
+  texts.forEach(id => {
     setTimeout(() => {
-      show(id);                 // 2️⃣ đợi nó mất hẳn rồi mới hiện chữ mới
-    }, 1000);                   // ⏱ khớp với transition opacity 1s
-  }, t);
-
-  t += 2500; // thời gian mỗi câu (mất + hiện + đứng)
-});
+      hideAllText();   // chữ cũ BIẾN MẤT
+      show(id);        // chữ mới HIỆN
+    }, t);
+    t += 2000;
+  });
 
   /* ===== TIMELINE ẢNH ===== */
 
