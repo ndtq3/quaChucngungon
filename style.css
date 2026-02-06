@@ -1,53 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: black;
-  overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Canvas */
-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Scene */
-.scene {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-}
-
-/* Door */
-.door {
-  position: absolute;
-  inset: 0;
-  background: url("assets/door.jpg") center/cover no-repeat;
-  transition: transform 2.5s ease;
-  transform-origin: left;
-}
-
-.door.open {
-  transform: perspective(1200px) rotateY(-75deg);
-}
-
 /* Butterfly */
 .butterfly {
   position: absolute;
-  width: 180px; /* TO HƠN */
+  width: 180px;
   left: 50%;
   top: 55%;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  animation: flap 1.2s infinite ease-in-out;
+  animation: flutter 1.2s ease-in-out infinite;
   transition: all 2s ease;
+  z-index: 3;
 }
 
 .butterfly.fly {
@@ -55,25 +16,12 @@ canvas {
   opacity: 0;
 }
 
-@keyframes flap {
-  0%,100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.08); }
-}
-
-/* Text */
-.text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 45%;
-  color: #fff;
-  font-size: 36px;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-  letter-spacing: 2px;
-}
-
-/* Heart canvas above galaxy */
-#heart {
-  z-index: 1;
+/* Wing flutter animation */
+@keyframes flutter {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
 }
