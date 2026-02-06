@@ -7,12 +7,24 @@ const texts = [
 
 let currentText = 0;
 
-/* Show first text */
-setTimeout(() => showText(0), 1000);
+function random(min, max){
+  return Math.random() * (max - min) + min;
+}
 
 function showText(i){
-  texts.forEach(t => t.style.opacity = 0);
-  texts[i].style.opacity = 1;
+  texts.forEach(t => t.classList.remove("show"));
+
+  const t = texts[i];
+
+  // random lệch ban đầu
+  t.style.setProperty("--dx", random(-120,120) + "px");
+  t.style.setProperty("--dy", random(-60,60) + "px");
+  t.style.setProperty("--rot", random(-12,12) + "deg");
+
+  // force reflow
+  t.offsetHeight;
+
+  t.classList.add("show");
 }
 
 /* Butterfly click */
