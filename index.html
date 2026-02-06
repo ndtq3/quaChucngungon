@@ -1,58 +1,78 @@
-@ -1,29 +1,48 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Chúc ngủ ngon</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-  
-<body>
-  <canvas id="galaxy"></canvas>
-  <canvas id="heart"></canvas>
+/* ===== TIỆN ÍCH ===== */
+const $ = id => document.getElementById(id);
 
-  <!-- BƯỚM -->
-  <img id="butterfly" src="assets/b.webp" />
+const show = id => $(id) && ($(id).style.opacity = 1);
+const hide = id => $(id) && ($(id).style.opacity = 0);
 
-  <!-- ẢNH NHÂN VẬT -->
-  <img class="char" id="imgT" src="assets/T.webp">
-  <img class="char" id="imgH" src="assets/H.webp">
-  <img class="char" id="imgT1" src="assets/T1.webp">
-  <img class="char" id="imgT2" src="assets/T2.webp">
-  <img class="char" id="imgQ" src="assets/Q.webp">
-  <img class="char" id="imgN" src="assets/N.webp">
-  <img class="char" id="imgH1" src="assets/H1.webp">
-  <img class="char" id="imgH2" src="assets/H2.webp">
+const hideAllText = () => {
+  document.querySelectorAll(".text").forEach(t => t.style.opacity = 0);
+};
 
-  <!-- TEXT -->
-  <div class="text" id="text0">Chạm vào để bướm bay</div>
-  <div class="text" id="text1">Gút nai</div>
-  <div class="text" id="text2">??? gì vậy</div>
-  <div class="text" id="text3">7749 công việc</div>
-  <div class="text" id="text4">Deadline</div>
-  <div class="text" id="text5">Poster, slide 💖 vàinff...</div>
-  <div class="text" id="text6">Dự trù kinh phí</div>
+/* ===== KHỞI TẠO ===== */
+hideAllText();
+setTimeout(() => show("text0"), 800);
 
-  <div class="text" id="text7">thôi đừng khóc</div>
+/* ===== CLICK BƯỚM ===== */
+$("butterfly").onclick = () => {
+  // BƯỚM BAY
+  $("butterfly").style.top = "-30%";
+  $("butterfly").style.opacity = 0;
 
-  <div class="text" id="text10">
-    anh chị luôn ủng hộ các em, không bao giờ soi xét,<br>
-    nhìn các em làm hoạt động ac vui lắm
-  </div>
+  hide("text0");
 
-  <div class="text" id="text11">anh chị sẽ làm gương</div>
-  <div class="text" id="text12">à</div>
+  /* ===== TIMELINE TEXT ===== */
+  const texts = [
+    "text1",
+    "text2",
+    "text3",
+    "text4",
+    "text5",
+    "text6",
+    "text7",
+    "text10",
+    "text11",
+    "text12",
+    "text13",
+    "text14"
+  ];
 
-  <div class="text" id="text13">
-    nói chung anh chị luôn yêu thương các em<br>
-    Vì chúng ta là
-  </div>
+  let t = 1500;
 
-  <div class="text big" id="text14">
-    CÁN BỘ ĐOÀN - HỘI KHOA ĐỊA CHẤT<br>
-    <span class="tiny">1</span> NGƯỜI 1 NHÀ
-  </div>
+  texts.forEach((id, i) => {
+    setTimeout(() => {
+      hideAllText();
+      show(id);
+    }, t);
 
-  <script src="main.js"></script>
-</body>
-</html>
+    t += 2000;
+  });
+
+  /* ===== TIMELINE ẢNH ===== */
+
+  // ÁO XANH
+  setTimeout(() => show("imgT"), 1500);
+  setTimeout(() => hide("imgT"), 3500);
+
+  // ÁO ĐEN
+  setTimeout(() => show("imgH"), 3500);
+  setTimeout(() => hide("imgH"), 6500);
+
+  // CÔNG VIỆC
+  setTimeout(() => show("imgT1"), 6500);
+  setTimeout(() => show("imgT2"), 7000);
+
+  // QUỲNH
+  setTimeout(() => show("imgQ"), 9000);
+
+  // NƯỚC MẮT
+  setTimeout(() => show("imgN"), 11500);
+  setTimeout(() => hide("imgN"), 14000);
+
+  // TRÁI TIM CUỐI
+  setTimeout(() => show("imgH1"), 15000);
+  setTimeout(() => show("imgH2"), 17500);
+
+  // HIỆU ỨNG
+  startGalaxy();
+  setTimeout(startHearts, 14000);
+};
