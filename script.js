@@ -27,23 +27,26 @@ $("butterfly").onclick = () => {
   $("butterfly").style.opacity = 0;
   hide("text0");
 
-  /* ===== TIMELINE TEXT ===== */
-  const texts = [
-    "text1", "text2", "text3", "text4",
-    "text5", "text6", "text7",
-    "text10", "text11", "text12",
-    "text13", "text14"
-  ];
+ const texts = [
+  "text1", "text2", "text3", "text4",
+  "text5", "text6", "text7",
+  "text10", "text11", "text12",
+  "text13", "text14"
+];
 
-  let t = 1500;
+let t = 1500;
 
-  texts.forEach(id => {
+texts.forEach(id => {
+  setTimeout(() => {
+    hideAllText();              // 1️⃣ cho chữ cũ biến mất
+
     setTimeout(() => {
-      hideAllText();   // ❗ chữ cũ biến mất
-      show(id);        // ❗ chữ mới hiện
-    }, t);
-    t += 2000;
-  });
+      show(id);                 // 2️⃣ đợi nó mất hẳn rồi mới hiện chữ mới
+    }, 1000);                   // ⏱ khớp với transition opacity 1s
+  }, t);
+
+  t += 2500; // thời gian mỗi câu (mất + hiện + đứng)
+});
 
   /* ===== TIMELINE ẢNH ===== */
 
