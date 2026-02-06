@@ -5,13 +5,12 @@
 }
 
 body{
-  margin:0;
   background:black;
   overflow:hidden;
   font-family:Segoe UI, sans-serif;
 }
 
-/* BƯỚM */
+/* ================= BƯỚM ================= */
 #butterfly{
   position:absolute;
   width:220px;
@@ -19,11 +18,11 @@ body{
   top:45%;
   transform:translate(-50%,-50%);
   cursor:pointer;
-  z-index:5;
+  z-index:10;
   transition:all 2s ease;
 }
 
-/* TEXT */
+/* ================= TEXT ================= */
 .text{
   position:absolute;
   width:100%;
@@ -32,34 +31,66 @@ body{
   font-size:32px;
   opacity:0;
   transition:opacity 1s ease;
-  z-index:4;
-  top:65%;
+  z-index:6;
+  top:70%;
+  pointer-events:none;
 }
 
-.big{font-size:42px;}
-.tiny{font-size:14px;}
+.big{ font-size:42px; }
+.tiny{ font-size:14px; }
 
-/* ẢNH NHÂN VẬT */
+/* ================= NHÂN VẬT ================= */
 .char{
   position:absolute;
   width:220px;
   opacity:0;
-  transition:opacity 1s ease;
-  z-index:2;
+  transition:opacity 1s ease, transform 1.5s ease;
+  z-index:3;
 }
 
-/* VỊ TRÍ MẪU */
-#imgT{ left:50%; top:40%; transform:translateX(-50%); }
-#imgH{ right:5%; top:40%; }
+/* ================= VỊ TRÍ ================= */
 
-#imgT1{ left:5%; top:45%; }
-#imgT2{ right:5%; top:55%; }
+/* Bạn áo xanh (giữa – to mờ dần) */
+#imgT{
+  left:50%;
+  top:42%;
+  transform:translateX(-50%) scale(1);
+}
 
-#imgQ{ left:40%; top:20%; }
+/* Áo đen – không che chữ */
+#imgH{
+  right:6%;
+  top:38%;
+}
 
-#imgN{ right:10%; top:45%; }
+/* Công việc 2–3 */
+#imgT1{
+  left:6%;
+  top:48%;
+}
+#imgT2{
+  right:6%;
+  top:58%;
+}
 
-#imgH1{ left:10%; top:50%; }
-#imgH2{ right:10%; top:50%; }
+/* Lè lưỡi */
+#imgQ{
+  left:42%;
+  top:22%;
+}
 
+/* Khóc */
+#imgN{
+  right:8%;
+  top:46%;
+}
 
+/* Động viên */
+#imgH1{
+  left:8%;
+  top:52%;
+}
+#imgH2{
+  right:8%;
+  top:52%;
+}
