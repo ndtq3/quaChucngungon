@@ -60,7 +60,7 @@ canvas{
 <canvas id="heart"></canvas>
 
 <div class="scene">
-  <img id="butterfly" class="butterfly"
+  <img src="assets/butterfly.webp" class="butterfly" id="butterfly">
   src="data:image/webp;base64,
 UklGRk4AAABXRUJQVlA4IEIAAABQAgCdASoQABAAkA4JZQCdADo
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -148,6 +148,13 @@ function startHearts(){
     requestAnimationFrame(anim);
   })();
 }
+  <script>
+  const butterfly = document.getElementById("butterfly");
+
+  butterfly.addEventListener("click", () => {
+    butterfly.classList.add("fly");
+  });
+</script>
 </script>
 
 </body>
