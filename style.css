@@ -5,54 +5,32 @@
 }
 
 body{
+  margin:0;
   background:black;
   overflow:hidden;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
-/* Canvas */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  pointer-events:none;
-}
-
-/* Background */
-.background{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  z-index:2;
-}
-
-/* Door */
-.door{
+.text{
   position:absolute;
-  inset:0;
-  background:url("assets/door.jpg") center/cover no-repeat;
-  transform-origin:left;
-  transition:transform 2.5s ease;
-}
-
-.door.open{
-  transform: perspective(1200px) rotateY(-75deg);
-}
-
-/* Butterfly */
-.butterfly{
-  position:absolute;
-  z-index:10; /* BẮT BUỘC */
-}
-
-.butterfly.fly{
-  top:-40%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  color:white;
+  font-size:28px;
   opacity:0;
+  animation: fly 3s ease forwards;
 }
 
-@keyframes flap{
-  0%,100%{ transform:translate(-50%,-50%) scale(1); }
-  50%{ transform:translate(-50%,-50%) scale(1.08); }
+@keyframes fly{
+  0%{
+    opacity:0;
+    transform:translate(-50%, -50%) scale(0.5);
+  }
+  100%{
+    opacity:1;
+    transform:translate(-50%, -150%) scale(1);
+  }
 }
 
 /* Text wrapper – KHÓA VỊ TRÍ */
